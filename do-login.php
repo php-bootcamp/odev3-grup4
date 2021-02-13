@@ -23,3 +23,21 @@
   * geri geldiğimde hata mesajı ile birlikte formda sadece kullanıcı adı kısmının
   * `eray` ile dolmasını bekliyoruz.)
   */
+
+ include "functions.php";
+
+ girisYonlendir(true, "posts.php");
+
+if (!isset($_POST['kullaniciadi']) || !isset($_POST['parola']))
+    yonlendir('login.php');
+
+$_SESSION['username'] = $_POST['kullaniciadi'];
+
+if ($_POST['kullaniciadi'] == "bootcamp" && $_POST['parola'] == "bootcamp") {
+    $_SESSION['login'] = true;
+    $_SESSION['user'] = "bootcamp";
+    yonlendir('posts.php');
+}
+
+$_SESSION['error'] = "Kullanıcı adı veya parola hatalı!";
+yonlendir('login.php');

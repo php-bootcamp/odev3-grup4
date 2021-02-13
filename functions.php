@@ -13,3 +13,20 @@
   * Bu dosyayı diğer dosyalarınızda dahil etmek için `require`, `include`,
   * `require_once` veya `include_once` fonksiyonlarını kullanabilirsiniz.
   */
+
+ session_start();
+
+ function girisKontrol() {
+     return isset($_SESSION['login']) && $_SESSION['login'];
+ }
+
+ function yonlendir($adres) {
+     header("Location: ".$adres);
+     exit;
+ }
+
+ function girisYonlendir($durum, $adres) {
+     if (girisKontrol() == $durum) {
+         yonlendir($adres);
+     }
+ }

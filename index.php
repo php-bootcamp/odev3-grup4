@@ -11,3 +11,8 @@
   * yapmış kullanıcı** için de yazı listesini(`posts.php`) göreceği sayfaya
   * yönlendirmesi gerekiyor.
   */
+
+ include "functions.php";
+
+girisYonlendir(false, 'login.php');
+girisYonlendir(true, 'posts.php');

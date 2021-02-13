@@ -1,8 +1,13 @@
+<?php
+include "functions.php";
+
+girisYonlendir(false, "login.php");
+?>
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>...</title>
+  <title>Yazılar</title>
 </head>
 <body>
     <?php
@@ -22,7 +27,16 @@
      * **Not:** Henüz veritabanı görmediğimiz için bu yazıları sabit (hardcoded)
      * verebilirsiniz. `data.php` dosyası üzerinden almanız bekleniyor.
      */
-    
+
+    $yazilar = include "data.php";
+
     ?>
+    <a href="seen.php">Okunanlar</a>
+    <a href="logout.php">Çıkış Yap</a>
+    <?php foreach($yazilar as $anahtar => $yazi): ?>
+    <h3><?= $yazi['baslik'] ?></h3>
+    <p><?= $yazi['aciklama'] ?></p>
+    <p><a href="post.php?yazi=<?= $anahtar ?>">Detaylar</a></p>
+    <?php endforeach; ?>
 </body>
 </html>

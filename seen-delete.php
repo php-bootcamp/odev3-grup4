@@ -13,3 +13,18 @@
   * Eğer bu sayfaya birden fazla yerden gelebiliyorsa **geldiği sayfaya** yönlenmesini
   * bekliyoruz.
   */
+
+ include "functions.php";
+
+ girisYonlendir(false, "login.php");
+
+ if (!isset($_GET['yazi']))
+     yonlendir("seen.php");
+
+ $yazilar = include "data.php";
+
+ if (!isset($yazilar[$_GET['yazi']]))
+     yonlendir("seen.php");
+
+ setcookie($_GET['yazi'], false, time()-3600);
+ yonlendir("seen.php");
